@@ -20,7 +20,7 @@ def inputImage():           # for taking input
     #'''
     #first_image = 'C:\Users\hp pc\Documents\pythonFiles\open\picture048.jpg'
     #second_image = 'C:\Users\hp pc\Documents\pythonFiles\open\picture049.jpg'
-    
+
     #first_image = 'C:\Users\hp pc\Documents\pythonFiles\open\Amol\img1.jpg'
     #second_image = 'C:\Users\hp pc\Documents\pythonFiles\open\Amol\img2.jpg'
     #'''
@@ -41,7 +41,7 @@ def store_point_coordinate(event,x,y,flags,param):  # stores values in point
         cv2.putText(img,str(x) + ' ' + str(y),(x-20,y-20),font,0.3,(255,255,255),1,cv2.LINE_AA)
         pts1.append([x,y])
         print (x, y)
-		
+
 def store_point_coordinate2(event,x,y,flags,param):
     font = cv2.FONT_HERSHEY_SIMPLEX
     if event == cv2.EVENT_FLAG_LBUTTON and len(pts2) < 4:
@@ -109,7 +109,7 @@ def resizeAuto(img, transMatrix):   #resizing function
     point = np.matrix(point)
     mat = np.matrix(transMatrix)
     point = mat * point
-    
+
     xmax = point[0,:].max()
     xmin = point[0,:].min()
     ymax = point[1,:].max()
@@ -129,13 +129,13 @@ def main(img,img2,pts1,pts2):
     print (img.shape)
 
     cv2.namedWindow('img1')
-    cv2.setMouseCallback('img1',store_point_coordinate)         
+    cv2.setMouseCallback('img1',store_point_coordinate)
 
     while(True):                        # storing 4 points into pts1, which is used for mapping
         cv2.imshow('img1',img)
         if(cv2.waitKey(30) == 27 or len(pts1) >= 4):
             break
-        
+
     pts1 = np.float32(pts1)             # convert pts1 to float32
 
 
@@ -155,7 +155,7 @@ def main(img,img2,pts1,pts2):
     img = resizeOnCenter(img,4)         # resize image to 4 times
 
     rows,cols,ch = img.shape
-    
+
     M = cv2.getPerspectiveTransform(pts2,pts1)  # getting transformation matrix to get perspection from 2nd image to 1st image
 
     np.save('./output/calibData/perspective_Second_First',M)     # Saving matrix
@@ -178,10 +178,10 @@ def main(img,img2,pts1,pts2):
 
     while(True) :
         beta = 1.0 - alpha
-        
+
         cv2.addWeighted(background,alpha,foreground, beta, 0.0, dist)   # weighted addition of two images
         cv2.imshow("Final",dist)
-        
+
         if ord('l') == cv2.waitKey(0) and alpha < 1.0:
             alpha += 0.05
         elif ord('k') == cv2.waitKey(0) and alpha > 0.0:
