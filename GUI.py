@@ -1,11 +1,11 @@
-from Tkinter import *
+from tkinter import *
 from new_window import *
 app = Tk()
 
 app.title('Outer GUI')
 app.geometry("500x500")
 app.resizable(0, 0)
- 
+
 var1= StringVar(app)
 var1.set("Select the number of cameras")
 
@@ -23,7 +23,7 @@ option.pack(side=LEFT)
 # test stuff
 
 def ok():
-    print "value is", var.get()
+    print ("value is", var.get())
     new_win(var.get())
     app.quit()
 

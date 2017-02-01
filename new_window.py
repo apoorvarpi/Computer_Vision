@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 from PIL import Image, ImageTk
 
 def new_win(var):
@@ -7,7 +7,7 @@ def new_win(var):
      top.title("camera "+X)
      top.geometry("800x800")
      top.resizable(0, 0)
- 
+
      imagee = Image.open("birds")
      photo = ImageTk.PhotoImage(imagee)
      frm1=Frame(top,width=532,height=800)
@@ -16,7 +16,3 @@ def new_win(var):
      lb.image = photo
      lb.pack(expand=False)
      top.mainloop()
-     
-
-
-
