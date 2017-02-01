@@ -19,6 +19,13 @@ def main(fig1):
   cv2.namedWindow('First image');
   #cv2.setMouseCallback('First image', store_point_coordinate)
 
+  x = 0
+  while(True):
+      cv2.imshow('Image 1',fig1)
+      x = x+1
+      if(cv2.waitKey(30) == 27):
+          break
+
 pts1 = []
 pts2 = []
 fig1 = np.zeros((2000,2000,3),np.uint8)
