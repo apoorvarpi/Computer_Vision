@@ -67,8 +67,7 @@ if __name__ == '__main__':
 
     M = cv2.getPerspectiveTransform(pts_src2,pts_src1)
     im_src = cv2.warpPerspective(im_src2, M, (cols,rows))
-
-    #cv2.imshow("Final", im_src)
+    
     #new code ends here
 
     #Display new image and wait for four clicks
