@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from utils import get_four_points
 
+
 def modifyValue(vec,img,factor,flag):
     rows,cols,ch = img.shape
     if flag == 1:
