@@ -1,6 +1,6 @@
 from tkinter import *
 from new_window import *
-from first_calib import *
+from combination_save import *
 
 r1 = []
 r2 = []
@@ -9,11 +9,10 @@ def caliberate(limit):
     for i in range(1,limit):
         str1 = "C"+str(r1[0])
         str2 = "C"+str(r2[0])
-        transform("calib.jpg",str1,"calib.jpg",str2)
+        transform(str1,str2)
 
 def ok():
     x = var.get()
-    print( "value is ", x)
     new_win(x)
     #Saving relations
     print(" Enter relations example 1-2: ")

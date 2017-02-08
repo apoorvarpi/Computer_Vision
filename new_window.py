@@ -1,13 +1,8 @@
-import cv2
-import numpy as np
-from tkinter import *
-from PIL import Image, ImageTk
+from save_matrices import *
 
 def new_win(var):
     for i in range(1,var+1):
         x = str(i)
-        im_name = "input/C"+x+"/calib.jpg"
-        image = cv2.imread(im_name)
-        im_title = "Camera "+x
-        cv2.imshow(im_title,image)
-        cv2.waitKey(0)
+        im_name = "calib.jpg"
+        im_cam = "C"+str(i)
+        save(im_name,im_cam)

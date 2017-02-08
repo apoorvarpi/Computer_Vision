@@ -56,14 +56,14 @@ def transform(im_nm1,im_cam1,im_nm2,im_cam2):
         ''')
 
     # Show image and wait for 4 clicks.
-    pts_src1 = get_four_points(im_src1);
+    pts_src1 = get_four_points(im_src1,im_cam2);
 
     print('''
         Repeat the above step for the next image
         ''')
 
     #Show second image and wait for four clicks
-    pts_src2 = get_four_points(im_src2);
+    pts_src2 = get_four_points(im_src2,im_cam2);
 
     rows,cols,ch = im_src1.shape
 
