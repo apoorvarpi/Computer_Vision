@@ -1,18 +1,15 @@
+import cv2
+import numpy as np
 from tkinter import *
 from PIL import Image, ImageTk
 
 def new_win(var):
-    for i in range(0,var):
-     top=Toplevel()
-     top.title("camera "+X)
-     top.geometry("800x800")
-     top.resizable(0, 0)
-
-     imagee = Image.open("birds")
-     photo = ImageTk.PhotoImage(imagee)
-     frm1=Frame(top,width=532,height=800)
-     frm1.pack(fill=None, expand=False)
-     lb=Label(frm1, image=photo,width=532,height=800)
-     lb.image = photo
-     lb.pack(expand=False)
-     top.mainloop()
+    for i in range(1,var+1):
+        x = str(i)
+        im_name = "input/C"+x+"/calib.jpg"
+        print (im_name)
+        image = cv2.imread(im_name)
+        im_title = "Camera "+x
+        tt = cv2.imread("input/C1/calib.jpg")
+        cv2.imshow(im_title,image)
+        cv2.waitKey(0)

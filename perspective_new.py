@@ -25,7 +25,6 @@ def resizeOnCenter(img, factor):        # resizing image keeping it in center
     return foreground
 
 if __name__ == '__main__':
-
     # Read in the image.
     im_nm1 = input("First image name: ")
     im_cam1 = input("First camera name: ")
