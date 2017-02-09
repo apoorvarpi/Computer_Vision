@@ -6,10 +6,10 @@ r1 = []
 r2 = []
 
 def caliberate(limit):
-    for i in range(1,limit):
-        str1 = "C"+str(r1[0])
-        str2 = "C"+str(r2[0])
-        transform(str1,str2)
+    for i in range(0,limit-1):
+        str1 = "C"+str(r1[i])
+        str2 = "C"+str(r2[i])
+        transform(str1,"calib.jpg",str2,"calib.jpg")
 
 def ok():
     x = var.get()
@@ -23,6 +23,8 @@ def ok():
         members = t.split('-')
         a = members[0]
         b = members[1]
+        #r1[i]=int(a)
+        #r2[i]=int(b)
         r1.append(int(a))
         r2.append(int(b))
     app.quit()
