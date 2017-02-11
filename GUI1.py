@@ -1,6 +1,7 @@
 from tkinter import *
 from new_window import *
 from combination_save import *
+import numpy as np
 
 r1 = []
 r2 = []
@@ -10,11 +11,15 @@ def caliberate(limit):
         str1 = "C"+str(r1[i])
         str2 = "C"+str(r2[i])
         transform(str1,"calib.jpg",str2,"calib.jpg")
+        cv2.waitKey(0)
 
 def ok():
+    app.quit()
     x = var.get()
     new_win(x)
     #Saving relations
+    w, h = x, x;
+    mat = [[0 for x in range(w)] for y in range(h)]
     print(" Enter relations example 1-2: ")
     for i in range(1,x):
         y = str(i)
@@ -23,12 +28,13 @@ def ok():
         members = t.split('-')
         a = members[0]
         b = members[1]
-        #r1[i]=int(a)
-        #r2[i]=int(b)
+        mat[int(a)-1][int(b)-1] = 1
+        mat[int(b)-1][int(a)-1] = 1
         r1.append(int(a))
         r2.append(int(b))
-    app.quit()
     #Actual Calliberation function call
+    file_name = "./Matrices/adjacency_matrix"
+    np.save(file_name,mat)
     caliberate(x)
 
 if __name__ == '__main__':
