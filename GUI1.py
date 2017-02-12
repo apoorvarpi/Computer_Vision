@@ -1,6 +1,7 @@
 from tkinter import *
 from new_window import *
 from combination_save import *
+from path_finding import *
 import numpy as np
 
 r1 = []
@@ -36,6 +37,7 @@ def ok():
     file_name = "./Matrices/adjacency_matrix"
     np.save(file_name,mat)
     caliberate(x)
+    final_matrices(x)
 
 if __name__ == '__main__':
     app = Tk()

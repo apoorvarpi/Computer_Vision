@@ -9,7 +9,7 @@ def obtain(im_nm,im_cam):
     return pts_src
 
 def transform(im_cam1,im_nm1,im_cam2,im_nm2):
-    print("For ",im_cam1," and ",im_cam2)
+    print("For ",im_cam1," from ",im_cam2)
     pts_src1 = obtain(im_nm1,im_cam1)
     pts_src2 = obtain(im_nm2,im_cam2)
 
@@ -18,6 +18,6 @@ def transform(im_cam1,im_nm1,im_cam2,im_nm2):
 
     M = cv2.getPerspectiveTransform(pts_src2,pts_src1)
     #saving the matrix
-    file_name = "./Matrices/"+im_cam1+"_"+im_cam2+".txt"
+    file_name = "./Matrices/"+im_cam2+"_"+im_cam1
     np.save(file_name,M)
-    print("Saved file ",im_cam1,"_",im_cam2)
+    print("Saved file ",im_cam2,"_",im_cam1)
