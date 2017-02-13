@@ -58,18 +58,8 @@ def create_matrix(path):
         M = np.matmul(M1,M2)
         file_name = "./Matrices/"+im_nm1+"_"+im_nm3
         np.save(file_name,M)
-        print("Saved file ",im_nm1,"_",im_nm3)
-
-        im_src1 = cv2.imread("input/C1/calib.jpg")
-        im_nm2 = "input/"+im_nm1+"/calib.jpg"
-        im_src2 = cv2.imread(im_nm2)
-        rows,cols,ch = im_src1.shape
-        print(rows," ",cols)
-        im_dst = cv2.warpPerspective(im_src2, M, (cols,rows))
-        cv2.imshow("Final Image",im_dst)
-        cv2.waitKey(0)
-
         im_nm2 = im_nm3
+    print("Saved file ",im_nm1,"_",im_nm3)
 
 def final_matrices(size):
     file_name = "./Matrices/adjacency_matrix.npy"
