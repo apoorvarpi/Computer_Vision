@@ -41,9 +41,9 @@ def save_path(M,size):
     for i in range(1, size):
         start = i
         end = 0
-        print(i+1," to 1")
+        #print(i+1," to 1")
         path = convert_path(find_path(graph,start,end))
-        print(path)
+        #print(path)
         if(len(path)>2):
             create_matrix(path)
 
@@ -56,26 +56,22 @@ def create_matrix(path):
         im_file2 = "./Matrices/"+im_nm2+"_"+im_nm3+".npy"
         M1 = np.load(im_file1)
         M2 = np.load(im_file2)
-        M = M2*M1
-        print(M1)
-        print(M2)
-        print(M)
+        M = M1*M2
         file_name = "./Matrices/"+im_nm1+"_"+im_nm3
         np.save(file_name,M)
         print("Saved file ",im_nm1,"_",im_nm3)
 
-        #im_src1 = cv2.imread("input/C1/calib.jpg")
-        #im_nm2 = "input/"+im_nm1+"/calb.jpg"
-        #im_src2 = cv2.imread(im_nm2)
-        #cv2.imshow("Image..",im_src1)
-        #rows,cols,ch = im_src1.shape
-        #im_dst = cv2.warpPerspective(im_src2, M, (cols,rows))
-        #cv2.imshow("Image",im_dist)
+        im_src1 = cv2.imread("input/C1/calib.jpg")
+        im_nm2 = "input/"+im_nm1+"/calib.jpg"
+        im_src2 = cv2.imread(im_nm2)
+        rows,cols,ch = im_src1.shape
+        im_dst = cv2.warpPerspective(im_src2, M, (cols,rows))
+        cv2.imshow("Final Image",im_dst)
+        cv2.waitKey(0)
 
         im_nm2 = im_nm3
 
 def final_matrices(size):
     file_name = "./Matrices/adjacency_matrix.npy"
     M = np.load(file_name)
-    print(M)
     save_path(M,size)
