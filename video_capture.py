@@ -8,7 +8,7 @@ def show_webcam( mirror=False):
         if mirror:
             img = cv2.flip(img, 1)
         rows, cols, ch = img.shape
-        M = np.load("./Matrices/C4_C1.npy")
+        M = np.load("./Matrices/C3_C1.npy")
         img1 = cv2.warpPerspective(img, M, (cols,rows))
         cv2.imshow('my webcam', img1)
         if cv2.waitKey(1) == 27:
