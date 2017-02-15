@@ -1,22 +1,16 @@
 import cv2
 import numpy as np
 
-def show_webcam( mirror=False):
-    cam = cv2.VideoCapture(0)
-    while True:
-        set_val, img = cam.read()
-        if mirror:
-            img = cv2.flip(img, 1)
-        rows, cols, ch = img.shape
-        M = np.load("./Matrices/C3_C1.npy")
-        img1 = cv2.warpPerspective(img, M, (cols,rows))
-        cv2.imshow('my webcam', img1)
-        if cv2.waitKey(1) == 27:
-            break  # esc to quit
-    cv2.destroyAllWindows()
+def show_webcam(number, mirror=False):
+    x = int(number)
+    for i in range(0, x):
+        name = "Camera "+str(i+1)
+        cv2.namedWindow(name)
+        
 
 def main():
-    show_webcam(mirror=True)
+    number = input("Enter the number of cameras: ")
+    show_webcam(number, mirror=True)
 
 if __name__ == '__main__':
     main()
