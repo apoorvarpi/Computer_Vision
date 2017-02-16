@@ -9,9 +9,6 @@ video1 = cv2.VideoCapture(0)
 
 cv2.namedWindow("Camera 3")
 video3 = cv2.VideoCapture(2)
-video3.set(cv2.CAP_PROP_FPS, 1)
-video3.set(3,20)
-video3.set(4,20)
 
 loop = True
 while(loop == True):
