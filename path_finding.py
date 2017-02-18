@@ -1,4 +1,3 @@
-#Finding path from every node , i.e node 0
 import numpy as np
 import cv2
 
@@ -54,8 +53,8 @@ def create_matrix(path):
         im_file2 = "./Matrices/"+im_nm2+"_"+im_nm3+".npy"
         M1 = np.load(im_file1)
         M2 = np.load(im_file2)
-        L = [[0,599,0,599],[0,799,799,799],[1,1,1,1]]
-        M = np.matmul(M1,M2)
+        print(im_file1," ",im_file2)
+        M = np.matmul(M2,M1)
         file_name = "./Matrices/"+im_nm1+"_"+im_nm3
         np.save(file_name,M)
         im_nm2 = im_nm3
