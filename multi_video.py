@@ -3,11 +3,11 @@ import numpy as np
 
 video1 = cv2.VideoCapture(1)
 
-video2 = cv2.VideoCapture(2)
+video2 = cv2.VideoCapture(3)
 
 video3 = cv2.VideoCapture(4)
 
-video4 = cv2.VideoCapture(3)
+video4 = cv2.VideoCapture(2)
 
 loop = True
 while(loop == True):
@@ -21,14 +21,12 @@ while(loop == True):
 
     val3, img3 = video3.read()
     M = np.load("./Matrices/C3_C1.npy")
-    #trans = np.matrix('1 0 200; 0 1 -150; 0 0 1')
-    #M = np.matmul(M, trans)
     img31 = cv2.warpPerspective(img3, M, (10000,10000))
     cv2.imshow("Camera 3", img31)
 
     val4, img4 = video4.read()
     M = np.load("./Matrices/C4_C1.npy")
-    #trans = np.matrix('1 0 -200; 0 1 -200; 0 0 1')
+    #trans = np.matrix('1 0 1000; 0 1 1000; 0 0 1')
     #M = np.matmul(M, trans)
     img41 = cv2.warpPerspective(img4, M, (10000,10000))
     cv2.imshow("Camera 4", img41)
