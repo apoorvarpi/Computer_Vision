@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-video1 = cv2.VideoCapture(1)
+video1 = cv2.VideoCapture('http://rit2014044:iiita665@172.16.15.215:8081/?action=stream?dummy=param.mjpg')
 
 video2 = cv2.VideoCapture(3)
 

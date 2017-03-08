@@ -1,68 +1,29 @@
 import numpy as np
 import cv2
+from Translate import *
 
-def find_mins():
+def find_mins(number):
     img1 = cv2.imread("./input/C1/calib.jpg")
 
-    M1 = np.load("./Matrices/C2_C1.npy")
-    M2 = np.load("./Matrices/C3_C1.npy")
-    M3 = np.load("./Matrices/C4_C1.npy")
+    rows, cols, ch = img1.shape
+    minx = 9999999
+    miny = 9999999
 
-    rows, cols,ch = img1.shape
-    xc1 = [0, 0, rows-1, rows-1]
-    xc2 = [0, cols-1, cols-1, 0]
+    arr = np.array([[0,0], [0,rows-1], [cols-1, rows-1], [cols-1,0]])
 
-    xxmin = 0
-    yymin = 0
+    for i in range(2,number+1):
+        name = "./Matrices/C"+str(i)+"_C1.npy"
+        M = np.load(name)
 
-    xmin = 999999
-    ymin = 999999
-    for i in range(0,rows):
-        for j in range(0,cols):
-            x = (M1[0][0]*i + M1[0][1]*j + M1[0][2])/(M1[2][0]*i + M1[2][1]*j + M1[2][2])
-            y = (M1[1][0]*i + M1[1][1]*j + M1[1][2])/(M1[2][0]*i + M1[2][1]*j + M1[2][2])
-            if x<xmin:
-                xmin = x
-            if y<ymin:
-                ymin = y
+        for j in range(0,4):
+            x = (M[0][0]*arr[j][0] + M[0][1]*arr[j][1] + M[0][2])/(M[2][0]*arr[j][0] + M[2][1]*arr[j][1] + M[2][2])
+            y = (M[1][0]*arr[j][0] + M[1][1]*arr[j][1] + M[1][2])/(M[2][0]*arr[j][0] + M[2][1]*arr[j][1] + M[2][2])
 
-    if xmin<xxmin:
-        xxmin = xmin
-    if ymin<yymin:
-        yymin = ymin
+            if x < minx:
+                minx = x
+            if y < miny:
+                miny = y
 
-    xmin = 999999
-    ymin = 999999
-    for i in range(0,rows):
-        for j in range(0,cols):
-            x = (M2[0][0]*i + M2[0][1]*j + M2[0][2])/(M2[2][0]*i + M2[2][1]*j + M2[2][2])
-            y = (M2[1][0]*i + M2[1][1]*j + M2[1][2])/(M2[2][0]*i + M2[2][1]*j + M2[2][2])
-            if x<xmin:
-                xmin = x
-            if y<ymin:
-                ymin = y
+    print(miny," ",miny)
 
-    if xmin<xxmin:
-        xxmin = xmin
-    if ymin<yymin:
-        yymin = ymin
-
-    xmin = 999999
-    ymin = 999999
-    for i in range(0,rows):
-        for j in range(0,cols):
-            x = (M3[0][0]*i + M3[0][1]*j + M3[0][2])/(M3[2][0]*i + M3[2][1]*j + M3[2][2])
-            y = (M3[1][0]*i + M3[1][1]*j + M3[1][2])/(M3[2][0]*i + M3[2][1]*j + M3[2][2])
-            if x<xmin:
-                xmin = x
-            if y<ymin:
-                ymin = y
-
-    if xmin<xxmin:
-        xxmin = xmin
-    if ymin<yymin:
-        yymin = ymin
-
-    print(xxmin," ",yymin)
-
-find_mins()
+find_mins(4)

@@ -8,7 +8,7 @@ from utils import get_four_points
 if __name__ == '__main__' :
 
     # Read in the image.
-    im_src = cv2.imread("book1.jpg")
+    im_src = cv2.imread("./input/C2/pers1.jpg")
 
     # Destination image
     size = (300,400,3)
@@ -33,7 +33,7 @@ if __name__ == '__main__' :
 
     # Show image and wait for 4 clicks.
     cv2.imshow("Image", im_src)
-    pts_src = get_four_points(im_src);
+    pts_src = get_four_points(im_src,"Image");
 
     # Calculate the homography
     h, status = cv2.findHomography(pts_src, pts_dst)
