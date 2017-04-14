@@ -19,6 +19,8 @@ def final_pers_adj(name, name1) :
 
     pts_base = get_four_points(im_base, "Image")
     pts_base = np.float32(pts_base)
+    print(M2)
+    print(pts_base)
 
     #calculate dimensions
     minx = 9999999
@@ -37,6 +39,7 @@ def final_pers_adj(name, name1) :
         if y<miny:
             miny = y
 
+    #size of base marked
     a = 4*int(maxx - minx)
     b = 4*int(maxy - miny)
 
@@ -44,19 +47,19 @@ def final_pers_adj(name, name1) :
     cols = M2[1][0]-M2[0][0]
     rows = M2[3][1]-M2[0][0]
 
-    #translateion works
-    xtranslate = -(pts_base[0][0]-M2[0][0])
+    #translation works
+    xtranslate = (pts_base[0][0]-M2[0][0])
     ytranslate = (pts_base[0][1]-M2[0][1])
     print(xtranslate," ",ytranslate)
     if xtranslate<=10.0:
         xtranslate = 0
     if ytranslate<=10.0:
         ytranslate = 0
-        
+
     #normalise co-ordinates
     for i in range(0,4):
-        pts_base[i][0] = 4*(pts_base[i][0] - minx)
-        pts_base[i][1] = 4*(pts_base[i][1] - miny)
+        pts_base[i][0] = (pts_base[i][0] - minx)
+        pts_base[i][1] = (pts_base[i][1] - miny)
 
     # Calculate the homography
     M = cv2.getPerspectiveTransform(pts_src, pts_base)

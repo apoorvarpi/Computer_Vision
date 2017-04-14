@@ -8,10 +8,10 @@ def main(size):
     im_base = cv2.imread("./input/Base.jpg")
     print('mark complete base')
     M = get_four_points(im_base, "Image")
-    for i in range(0,4):
-        M[i][0] = 4*M[i][0]
-        M[i][1] = 4*M[i][1]
-        print(i,": ",M[i][0]," ",M[i][1])
+    #for i in range(0,4):
+    #    M[i][0] = 4*M[i][0]
+    #    M[i][1] = 4*M[i][1]
+    #    print(i,": ",M[i][0]," ",M[i][1])
 
     name = "./Matrices/Base.npy"
     np.save(name,M);
