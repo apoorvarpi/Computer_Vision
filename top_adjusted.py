@@ -6,7 +6,7 @@ from utils import get_four_points
 import math
 
 
-def final_pers_adj(name, name1) :
+def final_pers_adj(name, name1,nnn) :
 
     M2 = np.load("./Matrices/Base.npy")
     # Reading the image.
@@ -66,8 +66,11 @@ def final_pers_adj(name, name1) :
     # Warp source image to destination
     im_dst = cv2.warpPerspective(im_src, M, (a, b))
 
-    M1 = np.float32([[1,0,xtranslate],[0,1,ytranslate]])
-    im_fin = cv2.warpAffine(im_dst,M1,(int(cols),int(rows)))
+    M1 = np.float32([[1,0,xtranslate],[0,1,ytranslate],[0,0,1]])
+    im_fin = cv2.warpPerspective(im_dst,M1,(int(cols),int(rows)))
+    Mx = M*M1
+    print str(x)
+    np.save(nnn,Mx)
 
     cv2.imshow("Image", im_fin)
     cv2.imwrite(name1, im_fin)
