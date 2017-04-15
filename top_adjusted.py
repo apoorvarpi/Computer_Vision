@@ -6,7 +6,7 @@ from utils import get_four_points
 import math
 
 
-def final_pers_adj(name, name1) :
+def final_pers_adj(name, name1, xx) :
 
     M2 = np.load("./Matrices/Base.npy")
     # Reading the image.
@@ -63,6 +63,8 @@ def final_pers_adj(name, name1) :
 
     # Calculate the homography
     M = cv2.getPerspectiveTransform(pts_src, pts_base)
+    name = "./Matrices/C"+str(xx)
+    np.save(name, M)
     # Warp source image to destination
     im_dst = cv2.warpPerspective(im_src, M, (a, b))
 
