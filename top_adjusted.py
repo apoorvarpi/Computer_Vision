@@ -68,8 +68,8 @@ def final_pers_adj(name, name1,nnn) :
 
     M1 = np.float32([[1,0,xtranslate],[0,1,ytranslate],[0,0,1]])
     im_fin = cv2.warpPerspective(im_dst,M1,(int(cols),int(rows)))
-    Mx = M*M1
-    print str(x)
+    Mx = np.dot(M,M1)
+    print str(Mx)
     np.save(nnn,Mx)
 
     cv2.imshow("Image", im_fin)
