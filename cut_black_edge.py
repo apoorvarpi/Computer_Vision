@@ -1,15 +1,19 @@
 import cv2
 import numpy as np
 
-for i in range(1,5):
+for i in range(1,2):
     name = "./input/C"+str(i)+"/perss2.jpg"
     im_src = cv2.imread(name)
     #cv2.imshow('Image',im_src)
     #cv2.waitKey(0)
     #print(im_src)
+    #nnn="./Matrices/pres"+str(i)+".npy"
+    #M2 = np.load(nnn)
     gray=im_src
     im_dst=cv2.bitwise_not(im_src)
     gray = cv2.cvtColor(im_dst, cv2.COLOR_BGR2GRAY)
+    #a,b=gray.shape[:2]
+    #gray = cv2.warpPerspective(gray, M2, (a, b))
     ret,gray = cv2.threshold(gray,127,255,0)
     kernel = np.ones((5,5),np.uint8)
     gray=cv2.erode(gray,kernel,iterations = 10);
@@ -27,7 +31,7 @@ for i in range(1,5):
         x,y,w,h = cv2.boundingRect(c)
         #cv2.rectangle(mask,(x,y),(x+w,y+h),(128,255,0),18)
         #print area
-        if area < 400000:
+        if area < 30000:
             cv2.drawContours(mask, [c], -1, (128,255,0), -1)
             #print 'ok\n'
     #gray=cv2.dilate(mask,kernel,iterations = 1);
@@ -36,14 +40,16 @@ for i in range(1,5):
     cv2.imshow('Image',mask)
     cv2.waitKey(0)
     if i is 1:
-    	print 'okk'
+    	#print 'okk'
     	im_done=mask
 
     h,w=im_done.shape[:2]
-    mask= cv2.resize(mask, (w, h)) 
+    mask= cv2.resize(mask, (w, h))
     im_done=cv2.bitwise_or(im_done,mask)
     im_dst=cv2.bitwise_not(im_done)
     ret,im_dst = cv2.threshold(im_dst,127,255,1)
+    im_dst=cv2.bitwise_not(im_done)
+    cv2.imwrite("./input/Output.jpg", im_dst)
     cv2.namedWindow('done',cv2.WINDOW_NORMAL)
     cv2.resizeWindow('done', 600,600)
     cv2.imshow('done',im_dst)
