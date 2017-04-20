@@ -19,7 +19,6 @@ def main(size):
     for i in range(1,size+1):
         name = "./input/C"+str(i)+"/bw.jpg"
         name1 = "./input/C"+str(i)+"/perss2.jpg"
-        nnn="./Matrices/pres"+str(i)+".npy"
-        final_pers_adj(name, name1,nnn)
+        final_pers_adj(name, name1, i)
 
-main(4)
+main(1)

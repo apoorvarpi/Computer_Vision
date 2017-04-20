@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-
 def cut():
     for i in range(1,5):
         name = "./input/C"+str(i)+"/perss2.jpg"

@@ -4,7 +4,6 @@ from collections import deque
 import argparse
 import imutils
 
-
 def local(xx):
     cap = cv2.VideoCapture(1)
     greenLower = (25, 100, 100)
@@ -56,4 +55,3 @@ def local(xx):
     cap.release()
     cv2.destroyAllWindows()
 
-local(1)
