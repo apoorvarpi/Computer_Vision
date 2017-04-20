@@ -19,8 +19,8 @@ def local(xx):
         # Our operations on the frame come here
         if ret==True:
             frame = imutils.resize(frame, width=600)
-            frame = cv2.GaussianBlur(frame, (11, 11), 0) 
-            nnn="./Matrices/pres"+str(xx)+".npy"
+            frame = cv2.GaussianBlur(frame, (11, 11), 0)
+            nnn="./Matrices/C"+str(xx)+".npy"
             M2 = np.load(nnn)
             h,w=frame.shape[:2]
             mask = cv2.warpPerspective(frame, M2,(w, h))
@@ -55,3 +55,4 @@ def local(xx):
     cap.release()
     cv2.destroyAllWindows()
 
+local(1)

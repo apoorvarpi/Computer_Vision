@@ -13,4 +13,5 @@ Order of execution:
   --save_perspective.py
   save_top.py
   cut_black_edge.py
-  local.py
+  ++find_obstacles.py
+  local.py  
