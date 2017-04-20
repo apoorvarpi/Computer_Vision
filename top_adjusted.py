@@ -70,7 +70,6 @@ def final_pers_adj(name, name1, xx) :
     M1 = np.float32([[1,0,xtranslate],[0,1,ytranslate],[0,0,1]])
     im_fin = cv2.warpPerspective(im_dst,M1,(int(cols),int(rows)))
     Mx = np.dot(M,M1)
-    Mx = M
     #print (str(Mx))
     nnn = name+"s"
     np.save(nnn,Mx)

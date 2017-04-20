@@ -18,7 +18,7 @@ for i in range(1, 33):
     #frame = imutils.resize(frame, width=600)
     h,w=frame.shape[:2]
     nnn="./Matrices/C"+str(1)+"s.npy"
-    M2 = np.load(nnn,)
+    M2 = np.load(nnn)
     mask=frame
     mask = cv2.warpPerspective(frame, M2, (w, h))
     mask = cv2.GaussianBlur(mask, (11, 11), 0)

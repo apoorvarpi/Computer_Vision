@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-def cut():
-    for i in range(1,5):
+def cut(size):
+    for i in range(1, size+1):
         name = "./input/C"+str(i)+"/perss2.jpg"
         im_src = cv2.imread(name)
         im_dst=cv2.bitwise_not(im_src)
@@ -22,7 +22,7 @@ def cut():
             area = cv2.contourArea(c)
             x,y,w,h = cv2.boundingRect(c)
             #cv2.rectangle(mask,(x,y),(x+w,y+h),(128,255,0),18)
-            print area
+            print(area)
             if area < 30000:
                 x,y,w,h = cv2.boundingRect(c)
                 print x,y,w,h
@@ -32,10 +32,10 @@ def cut():
         cv2.imshow('Image',mask)
         cv2.waitKey(0)
         if i is 1:
-        	print 'okk'
+        	print ('okk')
         	im_done=mask
         h,w=im_done.shape[:2]
-        mask= cv2.resize(mask, (w, h)) 
+        mask= cv2.resize(mask, (w, h))
         im_done=cv2.bitwise_or(im_done,mask)
         #im_dst=cv2.bitwise_not(im_done)
         ret,im_dst = cv2.threshold(im_dst,127,255,1)
@@ -43,7 +43,12 @@ def cut():
         im_dst=cv2.erode(im_dst,kernel,iterations = 10);
         cv2.namedWindow('done',cv2.WINDOW_NORMAL)
         cv2.resizeWindow('done', 600,600)
+
+        im_dst=cv2.dilate(im_dst,kernel,iterations = 10);
+        im_dst=cv2.erode(im_dst,kernel,iterations = 10);
+
         cv2.imshow('done',im_dst)
+        cv2.imwrite('./input/Output.jpg', im_dst)
         cv2.waitKey(0)
 
-cut()
+cut(1)
