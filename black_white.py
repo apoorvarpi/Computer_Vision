@@ -9,4 +9,4 @@ def color_correct(size):
         name1 = "input/C"+str(i)+"/bw.jpg"
         cv2.imwrite(name1,img1)
 
-color_correct(1)
+color_correct(2)

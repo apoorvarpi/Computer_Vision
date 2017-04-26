@@ -27,7 +27,7 @@ def dots(size):
 
 def resizex(size):
     for i in range(1, size+1):
-        name = "./input/C"+str(i)+"/calib.jpg"
+        name = "./input/C"+str(i)+"/calib1.jpg"
         im_src = cv2.imread(name)
         im_dst = cv2.resize(im_src, (800, 450))
         cv2.imwrite(name, im_dst)
@@ -36,4 +36,4 @@ def main(size):
     resizex(size)
     dots(size)
 
-main(1)
+main(2)

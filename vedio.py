@@ -21,8 +21,8 @@ top.geometry("1000x800")
 top.resizable(0, 0)
 #cv2.VideoCapture cap;
 #cap.open("http://rit2014023:got%40S4L2@172.16.15.215:8081/?action=stream?dummy=param.mjpg");
-#cap = cv2.VideoCapture("http://rit2014023:got%40S4L2@172.16.15.215:8081/?action=stream?dummy=param.mjpg")
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("http://rit2014023:got%40S4L2@172.16.15.245:8081/?action=stream?dummy=param.mjpg")
+#cap = cv2.VideoCapture(0)
 #cap.open("http://rit2014023:got%40S4L2@172.16.15.215:8081.mjpeg/")
 if ~cap.isOpened():
     print ('error')
