@@ -5,10 +5,10 @@ from collections import deque
 import argparse
 import imutils
 
-cap1 = cv2.VideoCapture(1)
-cap2 = cqp1
-#cap1 = cv2.VideoCapture('http://rit2014044:iiita665@172.16.15.215:8081/?action=stream?dummy=param.mjpg')
-#cap2 = cv2.VideoCapture('http://rit2014044:iiita665@172.16.15.245:8081/?action=stream?dummy=param.mjpg')
+#cap1 = cv2.VideoCapture(1)
+#cap1 = cv2.VideoCapture('http://172.16.15.215:8081/')
+cap1 = cv2.VideoCapture('http://rit2014044:iiita665@172.16.15.215:8081/?action=stream?dummy=param.mjpg')
+cap2 = cv2.VideoCapture('http://rit2014044:iiita665@172.16.15.245:8081/?action=stream?dummy=param.mjpg')
 cap3=cap1
 cap4=cap1
 #cap3 = cv2.VideoCapture(2)
@@ -29,8 +29,8 @@ def local(xx):
 	global Pa,Pb,Pc,Pd,goal,greenUpper,greenLower
 	if xx==1:
 		ret, frame = cap1.read()
-		greenLower = (23, 29, 20)
-		greenUpper = (78, 100, 100)
+		#greenLower = (23, 29, 20)
+		#greenUpper = (78, 100, 100)
 	if xx==2:
 		ret, frame = cap2.read()
 	if xx==3:
@@ -81,7 +81,7 @@ def local(xx):
 				if xx == 4:
 					temp=np.array([X,Y])
 					Pd=np.vstack((Pd,temp))
-                #cv2.drawContours(img,[c], -1, (0,255,0), 3)
+				cv2.drawContours(img,[c], -1, (0,255,0), 3)
                 if xx==1:
 				 cv2.imshow('frame',img)
 		# Display the resulting frame
@@ -132,7 +132,7 @@ while(cap1.isOpened()):
 		break
 # When everything done, release the capture
 cap1.release()
-cap2.release()
+#cap2.release()
 cap3.release()
 cap4.release()
 cv2.destroyAllWindows()

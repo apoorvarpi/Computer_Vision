@@ -22,8 +22,8 @@ def cut(size):
             area = cv2.contourArea(c)
             x,y,w,h = cv2.boundingRect(c)
             #cv2.rectangle(mask,(x,y),(x+w,y+h),(128,255,0),18)
-            #print(area)
-            if area < 3000:
+            print(area)
+            if area < 10000:
                 x,y,w,h = cv2.boundingRect(c)
                 #print (x,y,w,h)
                 cv2.drawContours(mask, [c], -1, (128,255,0), -1)
@@ -52,7 +52,7 @@ def cut(size):
         cv2.imwrite('./input/Output.jpg', im_done)
         cv2.waitKey(0)
 
-cut(2)
+cut(1)
 a=cv2.imread('./input/Output.jpg')
 a=cv2.bitwise_not(a)
 cv2.imwrite('./input/Output.jpg', a)
