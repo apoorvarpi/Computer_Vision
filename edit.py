@@ -36,4 +36,4 @@ def main(size):
     resizex(size)
     dots(size)
 
-main(1)
+main(2)

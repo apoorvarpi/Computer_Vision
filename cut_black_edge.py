@@ -26,6 +26,10 @@ def cut(size):
             if area < 10000:
                 x,y,w,h = cv2.boundingRect(c)
                 #print (x,y,w,h)
+                M = cv2.moments(c)
+                #X = int(M["m10"] / M["m00"])
+                #Y = int(M["m01"] / M["m00"])
+                #print (X, Y)
                 cv2.drawContours(mask, [c], -1, (128,255,0), -1)
         #cv2.namedWindow('Image',cv2.WINDOW_NORMAL)
         #cv2.resizeWindow('Image', 600,600)
@@ -52,7 +56,7 @@ def cut(size):
         cv2.imwrite('./input/Output.jpg', im_done)
         cv2.waitKey(0)
 
-cut(1)
+cut(2)
 a=cv2.imread('./input/Output.jpg')
 a=cv2.bitwise_not(a)
 cv2.imwrite('./input/Output.jpg', a)

@@ -21,4 +21,4 @@ def main(size):
         name1 = "./input/C"+str(i)+"/perss2.jpg"
         final_pers_adj(name, name1, i)
 
-main(1)
+main(2)
