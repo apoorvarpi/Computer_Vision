@@ -70,7 +70,7 @@ def local(xx):
 				M = cv2.moments(c)
 				X = int(M["m10"] / M["m00"])
 				Y = int(M["m01"] / M["m00"])
-				#print X, Y
+				print (X, Y)
 				cv2.drawContours(img,[c], -1, (0,255,0), 3)
 				if xx == 1:
 					temp=np.array([X,Y])
@@ -78,11 +78,11 @@ def local(xx):
 					Pa=t1
 					cv2.imshow('frame1',img)
 					text_file = open("./Matrices/Pa.txt", "w")
-					text_file.write("%d %d %d\n" % (1, (200-(X-21)*200/108), (Y-75)*200/147))
-					#print(200-(X-21)*200/108)
-					#print ((Y-75)*200/147)
+					text_file.write("%d %d\n" %  (((X-83)*200/95), (200-(Y-27)*200/128)) )
+					#print('X1 ', ((X-83)*200/95) )
+					#print ('Y1 ', (200-(Y-27)*200/128) )
 					#print(X, Y)
-					print (1)
+					#print (1)
 					text_file.close()
 
 				if xx == 2:
@@ -90,11 +90,11 @@ def local(xx):
 					Pb=np.vstack((Pb,temp))
 					cv2.imshow('frame2',img)
 					text_file = open("./Matrices/Pa.txt", "w")
-					text_file.write("%d %d %d\n" % (1, (360-(X-83)*160/85), ((Y-20)*200/150)))
-					#print (360-(X-83)*160/85)
-					#print ((Y-20)*200/150)
+					text_file.write(" %d %d\n" %  ((360-(X-83)*160/85), ((Y-20)*200/150)))
+					print ('X2 ', 360-(X-83)*160/85)
+					print ('Y2 ', (Y-20)*200/150)
 					#print(X, Y)
-					print (2)
+					#print (2)
 					text_file.close()
 				if xx == 3:
 					temp=np.array([X,Y])
@@ -152,7 +152,7 @@ def ori(PP):
 
 while(cap1.isOpened()):
 	local(1)
-	local(2)
+	#local(2)
 	#local(3)
 	#local(4)
 	if cv2.waitKey(1) == 27:

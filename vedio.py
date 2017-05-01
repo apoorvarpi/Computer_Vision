@@ -10,7 +10,7 @@ def on_mouse(event,x,y,flags,params):
 	if event == cv2.EVENT_LBUTTONDOWN:
 		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 		print("ok\n")
-		name = "frame.jpg"   # save frame as JPEG file
+		name = "calib1.jpg"   # save frame as JPEG file
 		#count=count+1
 		cv2.imwrite(name,frame)
 

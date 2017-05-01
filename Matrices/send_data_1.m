@@ -1,8 +1,9 @@
-function []=send_data(s,action,value)
+function []=send_data_1(sr,action,value)
     if(action==1)
         value=value*10;
     end
-    value=int16(value);
+    value;
+    value=int16(value)
     dis = value;
     angle = value;
     stop = '(';
@@ -17,10 +18,10 @@ function []=send_data(s,action,value)
         out = strcat(d,e);
     end
     for i=1:length(out)
-        fprintf(s, '%c', out(i));
+        fprintf(sr, '%c', out(i));
        % out(i)
     end
-    fprintf(s,'%c',stop);
-   pause(2.5);
-   %s = input('');
+    fprintf(sr,'%c',stop);
+   pause(0);
+%     g = input('');
 end
